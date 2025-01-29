@@ -6,14 +6,14 @@
 #    By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/28 16:25:10 by cmetee-b          #+#    #+#              #
-#    Updated: 2025/01/29 14:28:35 by cmetee-b         ###   ########.fr        #
+#    Updated: 2025/01/29 14:47:37 by cmetee-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #les_variables
 NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I../includes
 
 #les_fichiers
 SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
@@ -36,7 +36,7 @@ RESET   := "\033[0m"
 
 #regles
 %.o: %.c
-	$(CC) $(CFLAGS) -fPIE -I. -c $< -o $@
+	@$(CC) $(CFLAGS) -fPIE -c $< -o $@
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
