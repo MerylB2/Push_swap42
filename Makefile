@@ -4,14 +4,16 @@ BONUS = checker
 LIBFT_DIR = ./libft
 LIBFT =  $(LIBFT_DIR)/libft.a
 INC_D = /includes
+SRC_DIR = srcs
+BONUS_DIR = bonus
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 
-SRCS = 
+SRCS = $(shell find $(SRC_DIR) -name "*.c")
 
-BONUS_SRCS = 
+BONUS_SRCS = $(shell find $(BONUS_DIR) -name "*.c")
 
 OBJ_DIR = ps_build
 
