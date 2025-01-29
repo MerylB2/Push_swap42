@@ -6,12 +6,11 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 15:11:59 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/24 13:37:15 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:37:10 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "../libft/libft.h"
+#include "libft.h"
 
 int	ft_putnbr(int nbr)
 {

@@ -6,13 +6,12 @@
 #    By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/28 16:25:10 by cmetee-b          #+#    #+#              #
-#    Updated: 2025/01/29 13:49:58 by cmetee-b         ###   ########.fr        #
+#    Updated: 2025/01/29 14:28:35 by cmetee-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #les_variables
 NAME = libft.a
-#ajouter printf ici et refaire le makefile en condition
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -24,14 +23,16 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
        ft_tolower.c ft_toupper.c ft_substr.c ft_strjoin.c ft_strtrim.c \
 	   ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
 	   ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c get_next_line.c \
-	   get_next_line_utils.c 
+	   get_next_line_utils.c ft_printf.c ft_printf_utils.c ft_lstadd_back.c \
+	   ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
+	   ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
 OBJS = $(SRCS:.c=.o)
 
-BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
-	ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
-
-BONUS_OBJS = $(BONUS:.c=.o)
+#couleurs
+RED     := "\033[1;31m"
+GREEN   := "\033[1;32m"
+RESET   := "\033[0m"
 
 #regles
 %.o: %.c
@@ -40,21 +41,17 @@ BONUS_OBJS = $(BONUS:.c=.o)
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "Compilation reussie!"
+	@echo $(GREEN)"COMPILATION LIBFT OK!!!!"$(RESET)
 
 all: $(NAME)
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	@ar rc $(NAME) $(OBJS) $(BONUS_OBJS)
-	@echo "Compilation avec Bonus reussie!"
-
 clean:
-	@/bin/rm -rf $(OBJS) $(BONUS_OBJS)
-	@echo "Nettoyage des fichiers objects!"
+	@rm -rf $(OBJS)
+	@echo $(GREEN)"NETTOYAGE DES FICHIERS OBJECTS DE LA LIBFT!! OK"
 
 fclean: clean
-	@/bin/rm -rf $(NAME)
-	@echo "Netoyage complet!"
+	@rm -rf $(NAME)
+	@echo $(GREEN)"NETTOYAGE COMPLET DE LA LIBFT!!! OK"
 
 re: fclean all
 

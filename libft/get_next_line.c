@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:18:08 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/24 13:39:26 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:34:13 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,20 +97,20 @@ char	*clean_line(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*r_line;
+	static char	*r_line[FOPEN_MAX];
 	char		*n_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!r_line)
+	if (!r_line[fd])
 	{
-		r_line = malloc(1);
-		r_line[0] = '\0';
+		r_line[fd] = malloc(1);
+		r_line[fd][0] = '\0';
 	}
-	r_line = read_file_from_fd(r_line, fd);
-	if (!r_line)
+	r_line[fd] = read_file_from_fd(r_line[fd], fd);
+	if (!r_line[fd])
 		return (NULL);
-	n_line = extract_line(r_line);
-	r_line = clean_line(r_line);
+	n_line = extract_line(r_line[fd]);
+	r_line[fd] = clean_line(r_line[fd]);
 	return (n_line);
 }
