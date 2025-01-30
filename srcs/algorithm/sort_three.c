@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_algo.c                                        :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:42:27 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 16:57:25 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:42:52 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sort_stack(t_data *data)
 	if (data->total_size == 2)
 	{
 		if (data->stack_a->head->value > data->stack_a->head->next->value)
-			swap_a(data->stack_a, 1);
+			swap_a(data->stack_a);
 		return ;
 	}
 	if (data->total_size == 3)
@@ -40,20 +40,20 @@ void	sort_three(t_stack *stack)
 	second = stack->head->next->value;
 	third = stack->head->next->next->value;
 	if (first > second && second < third && first < third)
-		swap_a(stack, 1);
+		swap_a(stack);
 	else if (first > second && second > third)
 	{
-		swap_a(stack, 1);
-		rotate_rev_a(stack, 1);
+		swap_a(stack);
+		rotate_rev_a(stack);
 	}
 	else if (first > second && second < third && first > third)
-		rotate_a(stack, 1);
+		rotate_a(stack);
 	else if (first < second && second > third && first < third)
 	{
-		swap_a(stack, 1);
-		rotate_a(stack, 1);
+		swap_a(stack);
+		rotate_a(stack);
 	}
 	else if (first < second && second > third && first > third)
-		rotate_rev_a(stack, 1);
+		rotate_rev_a(stack);
 }
 

@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:12:24 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 13:41:16 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:23:40 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	parse_args(int argc, char **argv, t_data *data)
 		add_node_back(data->stack_a, new_node);
 		i++;
 	}
+	check_duplicates(data->stack_a);
 }
 
 int	is_valid_number(char *str)

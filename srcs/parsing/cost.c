@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 19:23:11 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 20:37:17 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:45:33 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	execute_cheapest_move(t_data *data)
 		}
 		current = current->next;
 	}
-	
 	execute_move(data, cheapest->cost_a, cheapest->cost_b);
 	push_a(data->stack_a, data->stack_b);
 }

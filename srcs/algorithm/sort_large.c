@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:21:50 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 17:35:09 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:07:17 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ static void	rotate_to_min(t_stack *stack, int min_pos)
 	{
 		if (min_pos <= stack->size / 2)
 		{
-			rotate_a(stack, 1);
+			rotate_a(stack);
 			min_pos--;
 		}
 		else
 		{
-			rotate_rev_a(stack, 1);
+			rotate_rev_a(stack);
 			min_pos++;
 		}
 	}

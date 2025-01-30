@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:54:34 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 19:36:59 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:30:03 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,15 +101,17 @@ int		is_sorted(t_stack *stack);
 int		get_distance(t_stack *stack, int index);
 void	print_stacks(t_data *data);
 int		get_min_index_position(t_stack *stack);
+t_node	*create_node(int value);
+void	add_node_back(t_stack *stack, t_node *new_node);
 void	rote_to_min(t_data *data);
 
-/*
-** Fonctions de debug (activées avec -DDEBUG)
-*/
-# ifdef DEBUG
-void	debug_print_stacks(t_data *data);
-void	debug_print_costs(t_stack *a, t_stack *b);
-void	debug_print_move(char *operation);
-# endif
+// /*
+// ** Fonctions de debug (activées avec -DDEBUG)
+// */
+// # ifdef DEBUG
+// void	debug_print_stacks(t_data *data);
+// void	debug_print_costs(t_stack *a, t_stack *b);
+// void	debug_print_move(char *operation);
+// # endif
 
 #endif
