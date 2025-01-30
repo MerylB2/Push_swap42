@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mem_check.c                                        :+:      :+:    :+:   */
+/*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 11:59:45 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 12:08:31 by cmetee-b         ###   ########.fr       */
+/*   Created: 2025/01/30 12:13:00 by cmetee-b          #+#    #+#             */
+/*   Updated: 2025/01/30 13:47:45 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_stack(t_stack *stack)
+long long   ft_atoll(const char *str)
 {
-	t_node	*current;
-	t_node	*next;
+    long long   res;
+    int         sign;
 
-	if (!stack)
-		return ;
-	current = stack->head;
-	while (current)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
-	free(stack);
-}
-
-void	free_program(t_data *data)
-{
-	if (!data)
-		return ;
-	if (data->stack_a)
-		free_stack(data->stack_a);
-	if (data->stack_b)
-		free_stack(data->stack_b);
-	data->stack_a = NULL;
-	data->stack_b = NULL;	
+    res = 0;
+    sign = 1;
+    while (*str == ' ' || (*str >= 9 && *str <= 13))
+        str++;
+    if (*str == '+' || *str == '-')
+    {
+        if (*str == '-')
+            sign *= -1;
+        str++;
+    }
+    while (*str >= '0' && *str <= '9')
+    {
+        res = res * 10 + (*str - '0');
+        str++;
+    }
+    return (res * sign);
 }
