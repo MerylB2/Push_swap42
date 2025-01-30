@@ -45,12 +45,12 @@ $(OBJ_DIR):
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
 	$(RM) $(OBJS) $(BONUS_OBJS)
-	$(RM) $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)
 	$(RM) $(NAME) $(BONUS)
-	$(RM) $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 
 re: fclean all
 

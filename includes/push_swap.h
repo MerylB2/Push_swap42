@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:54:34 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 11:21:18 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/30 19:36:59 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,19 @@
 */
 typedef struct s_node
 {
-    int				value;
-    int				index;
-    int				pos;
-    int				target_pos;
-    int				cost_a;
-    int				cost_b;
-    struct  s_node 	*next;
-}   t_node;
+	int				value;
+	int				index;
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
+	struct  s_node 	*next;
+}	t_node;
 
 /*
 ** Structure de la pile
 */
-typedef struct  s_stack
+typedef struct s_stack
 {
 	t_node	*head;
 	char	name;
@@ -64,7 +64,7 @@ typedef struct s_data
 ** Fonctions d'initialisation et de gestion de la mémoire
 */
 void	init_program(t_data *data);
-t_stack	*ceate_stack(char name);
+t_stack	*create_stack(char name);
 void	free_program(t_data *data);
 void	free_stack(t_stack *stack);
 void	error_exit(t_data *data, char msg);
@@ -101,7 +101,7 @@ int		is_sorted(t_stack *stack);
 int		get_distance(t_stack *stack, int index);
 void	print_stacks(t_data *data);
 int		get_min_index_position(t_stack *stack);
-void	rotate_to_min(t_data *data);
+void	rote_to_min(t_data *data);
 
 /*
 ** Fonctions de debug (activées avec -DDEBUG)
