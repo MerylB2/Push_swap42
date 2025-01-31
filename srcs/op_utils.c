@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:05:15 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 20:35:08 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/31 11:58:17 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static void	verify_op(t_stack *a, t_stack *b, char *op)
 	else if (ft_strcmp(op, "rrr") == 0)
 		reverse_rotate_r(a, b);
 }
+
 void	execute_op(t_stack *a, t_stack *b, char *op)
 {
 	if (!is_valid_operation(op)) 

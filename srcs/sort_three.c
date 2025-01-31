@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 16:42:27 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 21:42:52 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:49:54 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,14 @@ void	sort_stack(t_data *data)
 	}
 	if (data->total_size == 3)
 		sort_three(data->stack_a);
-	else if (data->total_size <= 5)
+	if (data->total_size <= 5)
 		sort_small(data);
-	else
+	if (data->total_size > 5)
+	{
 		sort_large(data);
+		while (!is_sorted(data->stack_a))
+			execute_cheapest_move(data);
+	}
 }
 
 void	sort_three(t_stack *stack)

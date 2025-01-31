@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:54:34 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 21:30:03 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:12:23 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	print_stacks(t_data *data);
 int		get_min_index_position(t_stack *stack);
 t_node	*create_node(int value);
 void	add_node_back(t_stack *stack, t_node *new_node);
-void	rote_to_min(t_data *data);
+void	rotate_to_min(t_data *data);
 
 // /*
 // ** Fonctions de debug (activées avec -DDEBUG)
