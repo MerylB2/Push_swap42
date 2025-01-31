@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:05:15 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/31 11:58:17 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:20:12 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int is_valid_operation(char *op)
 	valid_ops[9] = "rrb";
 	valid_ops[10] = "rrr";
 	i = 0;
-	while (valid_ops[i]);
+	while (valid_ops[i])
 	{
-		if (ft_strcmp(op, valid_ops[i] == 0))
+		if (ft_strcmp(op, valid_ops[i]) == 0)
 			return (1);
 		i++;
 	}
-	rteurn (0);
+	return (0);
 }
 
 static void	verify_op(t_stack *a, t_stack *b, char *op)
@@ -57,16 +57,16 @@ static void	verify_op(t_stack *a, t_stack *b, char *op)
 		push_b(a, b);
 	else if (ft_strcmp(op, "ra") == 0)
 		rotate_a(a);
-	else if (ft_trcmp(op, "rb") == 0)
+	else if (ft_strcmp(op, "rb") == 0)
 		rotate_b(b);
 	else if (ft_strcmp(op, "rr") == 0)
 		rotate_r(a, b);
 	else if (ft_strcmp(op, "rra") == 0)
-		reverse_rotate_a(a);
+		rotate_rev_a(a);
 	else if (ft_strcmp(op, "rrb") == 0)
-		reverse_rotate_b(b);
+		rotate_rev_b(b);
 	else if (ft_strcmp(op, "rrr") == 0)
-		reverse_rotate_r(a, b);
+		rotate_rev_r(a, b);
 }
 
 void	execute_op(t_stack *a, t_stack *b, char *op)
@@ -74,7 +74,7 @@ void	execute_op(t_stack *a, t_stack *b, char *op)
 	if (!is_valid_operation(op)) 
 	{
 		ft_printf("Error\n");
-		return;
+		return ;
 	}
 	verify_op(a, b, op);
 	print_operation(op);

@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:54:34 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/31 12:12:23 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:26:44 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,49 +25,13 @@
 # define ERR_OVERFLOW "Error: Number overflow\n"
 
 /*
-** Structure du nœud de la pile
-*/
-typedef struct s_node
-{
-	int				value;
-	int				index;
-	int				pos;
-	int				target_pos;
-	int				cost_a;
-	int				cost_b;
-	struct  s_node 	*next;
-}	t_node;
-
-/*
-** Structure de la pile
-*/
-typedef struct s_stack
-{
-	t_node	*head;
-	char	name;
-	int		size;
-}	t_stack;
-
-/*
-** Structure principale
-*/
-typedef struct s_data
-{
-	t_stack *stack_a;
-	t_stack	*stack_b;
-	int		total_size;
-	int		min_value;
-	int		max_value;
-}	t_data;
-
-/*
 ** Fonctions d'initialisation et de gestion de la mémoire
 */
 void	init_program(t_data *data);
 t_stack	*create_stack(char name);
 void	free_program(t_data *data);
 void	free_stack(t_stack *stack);
-void	error_exit(t_data *data, char msg);
+void	error_exit(t_data *data, const char *msg);
 
 /*
 ** Fonctions de parsing et validation
@@ -103,7 +67,7 @@ void	print_stacks(t_data *data);
 int		get_min_index_position(t_stack *stack);
 t_node	*create_node(int value);
 void	add_node_back(t_stack *stack, t_node *new_node);
-void	rotate_to_min(t_data *data);
+//void	rotate_to_min(t_data *data);
 
 // /*
 // ** Fonctions de debug (activées avec -DDEBUG)

@@ -6,7 +6,7 @@
 #    By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/28 16:25:10 by cmetee-b          #+#    #+#              #
-#    Updated: 2025/01/30 20:25:22 by cmetee-b         ###   ########.fr        #
+#    Updated: 2025/01/31 15:30:34 by cmetee-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,11 +47,11 @@ all: $(NAME)
 
 clean:
 	@rm -rf $(OBJS)
-	@echo $(GREEN)"NETTOYAGE DES FICHIERS OBJECTS DE LA LIBFT!! OK"
+	@echo $(GREEN)"NETTOYAGE DES FICHIERS OBJECTS DE LA LIBFT!! OK"$(RESET)
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo $(GREEN)"NETTOYAGE COMPLET DE LA LIBFT!!! OK"
+	@echo $(GREEN)"NETTOYAGE COMPLET DE LA LIBFT!!! OK"$(RESET)
 
 re: fclean all
 

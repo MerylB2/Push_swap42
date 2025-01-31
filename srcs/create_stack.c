@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:48:35 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 11:59:41 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:07:36 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,11 @@ t_stack	*create_stack(char name)
 	return(new_stack);
 }
 
-void	error_exit(t_data *data, char *msg)
+void	error_exit(t_data *data, const char *msg)
 {
+	
 	if (msg)
-		write(2, msg, ft_strlen(msg));
-	else
-		write(2, "Error\n", 6);
+		ft_putstr_fd("Error\n", 2);
 	if (data)
 		free_program(data);
 	exit (1);

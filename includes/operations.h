@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 10:42:35 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 19:53:29 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:50:16 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,44 @@
 # define OPERATIONS_H
 
 # include "push_swap.h"
+# include "operations.h"
+
+/*
+** Structure du nœud de la pile
+*/
+typedef struct s_node
+{
+	int				value;
+	int				index;
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
+	struct  s_node 	*next;
+}	t_node;
+
+/*
+** Structure de la pile
+*/
+typedef struct s_stack
+{
+	t_node	*head;
+	char	name;
+	int		size;
+}	t_stack;
+
+/*
+** Structure principale
+*/
+typedef struct s_data
+{
+	t_stack *stack_a;
+	t_stack	*stack_b;
+	int		total_size;
+	int		min_value;
+	int		max_value;
+}	t_data;
+
 /*
 ** --- SWAP OPERATIONS ---
 ** Échange les 2 premiers éléments au sommet de la pile
