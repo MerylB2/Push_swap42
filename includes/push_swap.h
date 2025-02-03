@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:54:34 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/31 16:26:44 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:13:06 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,67 +14,63 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+# include <stdbool.h>
 # include "operations.h"
 
 /*
-** Messages d'erreur
+** Gestion des erreurs
 */
-# define ERR_MALLOC "Error: Memory allocation failed\n"
-# define ERR_ARGS "Error: Invalid arguments\n"
-# define ERR_DUP "Error: Duplicate numbers found\n"
-# define ERR_OVERFLOW "Error: Number overflow\n"
+int		error_syntax(char *s);
+int		error_duplicate(t_data *a, int nb);
+void	free_stack(t_data **stack);
+void	free_errors(t_data **a);
+/*
+** Fonctions d'initialisation de la stack
+*/
+void	init_stack_a(t_data **data, char **av);
+char	**ft_split_stack(char *s, char c);
+long	ft_atol (const char *str);
 
 /*
-** Fonctions d'initialisation et de gestion de la mémoire
+** Fonctions d'initialisation des noeuds
 */
-void	init_program(t_data *data);
-t_stack	*create_stack(char name);
-void	free_program(t_data *data);
-void	free_stack(t_stack *stack);
-void	error_exit(t_data *data, const char *msg);
 
-/*
-** Fonctions de parsing et validation
-*/
-void	parse_args(int argc, char **argv, t_data *data);
-int		is_valid_number(char *str);
-long long	ft_atoll(const char *str);
-void	check_duplicates(t_stack *stack);
-void	index_stack(t_stack *stack);
+void	init_nodes_a(t_data *a, t_data *b);
+void	init_nodes_b(t_data *a, t_data *b);
+void	current_index(t_data *stack);
+void	set_cheapest(t_data *stack); 
+t_data	*get_cheapest(t_data *stack); 
+void	prep_for_push(t_data **s, t_data *nb, char c);
 
 /*
 ** Fonctions pour l'algorithme de tri
 */
-void	sort_stack(t_data *data);
-void	sort_three(t_stack *stack);
-void	sort_small(t_data *data);
-void	sort_large(t_data *data);
+void	sort_stack(t_data **a, t_data **b);
+void	sort_three(t_data *a);
 
 /*
 ** Fonctions de calcul des positions et coûts
 */
-void	get_position(t_stack *stack);
-void	get_target_position(t_stack *a, t_stack *b);
-void	calculate_cost(t_stack *a, t_stack *b);
+void	get_position(t_data *stack);
+void	get_target_position(t_data *a, t_data *b);
+void	calculate_cost(t_data *a, t_data *b);
 void	execute_cheapest_move(t_data *data);
 
 /*
 ** Fonctions utilitaires
 */
-int		is_sorted(t_stack *stack);
-int		get_distance(t_stack *stack, int index);
-void	print_stacks(t_data *data);
-int		get_min_index_position(t_stack *stack);
-t_node	*create_node(int value);
-void	add_node_back(t_stack *stack, t_node *new_node);
-//void	rotate_to_min(t_data *data);
+bool	is_sorted(t_data *stack);
+int		get_stack_len(t_data *stack);
+t_data	find_last_node(t_data *stack);
+t_data	*find_min_nb(t_data *stack);
+t_data	*find_max_nb(t_data *stack);
 
 // /*
 // ** Fonctions de debug (activées avec -DDEBUG)
 // */
 // # ifdef DEBUG
 // void	debug_print_stacks(t_data *data);
-// void	debug_print_costs(t_stack *a, t_stack *b);
+// void	debug_print_costs(t_data *a, t_stack *b);
 // void	debug_print_move(char *operation);
 // # endif
 

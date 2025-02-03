@@ -6,44 +6,63 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:48:35 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/31 16:07:36 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:08:21 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_program(t_data *data)
+void	init_stack_a(t_data **a, char **av)
 {
-	if (!data)
-		error_exit(NULL, ERR_MALLOC);
-	data->stack_a = create_stack('a');
-	data->stack_b = create_stack('b');
-	if (!data->stack_a || !data->stack_b)
-		error_exit(data, ERR_MALLOC);
-	data->total_size = 0;
-	data->min_value = INT_MAX;
-	data->max_value = INT_MIN;
+	long	n;
+	int		i;
+
+	while (av[i])
+	{
+		if (error_syntax(av[i]))
+			free_errors(a);
+		n = ft_atoll(av[i]);
+		if (n > INT_MAX || n < INT_MIN)
+			free_erros(a);
+		if (error_duplicate(*a, (int)n))
+			free_errors(a);
+		append_node(a, (int)n);
+		i++;
+	}
 }
 
-t_stack	*create_stack(char name)
+t_data	*get_cheapest(t_data *stack)
 {
-	t_stack	*new_stack;
-
-	new_stack = (t_stack *)malloc(sizeof(t_stack));
-	if (!new_stack)
+	if (!stack)
 		return (NULL);
-	new_stack->head = NULL;
-	new_stack->size = 0;
-	new_stack->name = name;
-	return(new_stack);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }
 
-void	error_exit(t_data *data, const char *msg)
+void	prep_for_push(t_data **stack,
+						t_data *top_node,
+						char stack_name)
 {
-	
-	if (msg)
-		ft_putstr_fd("Error\n", 2);
-	if (data)
-		free_program(data);
-	exit (1);
+	while (*stack != top_node)
+	{
+		if (stack_name == 'a')
+		{
+			if (top_node->median)
+				rotate_a(stack, false);
+			else
+				rotate_rev_a(stack, false);
+		}
+		else if (stack_name == 'b')
+		{
+			if (top_node->median)
+				rotate_b(stack, false);
+			else
+				rotate_rev_b(stack, false);
+		}	
+	}
 }

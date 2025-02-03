@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:36:47 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/31 12:45:03 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:53:58 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,25 @@
 
 int	main(int ac, char **av)
 {
-	t_data	data;
+	t_data	*a;
+	t_data	*b;
 
-	if (ac < 2)
-		return (0);
-	init_program(&data);
-	parse_args(ac, av, &data);
-	if (is_sorted(data.stack_a))
+	a = NULL;
+	b = NULL;
+	if (ac == 1 || (ac == 2 && !av[1][0]))
+		return (1);
+	else if (ac == 2)
+		av = ft_split_atack(av[1], ' ');
+	init_stack_a(&a, av + 1);
+	if (!is_sorted(a))
 	{
-		free_program(&data);
-		return (0);
+		if (stack_len(a) == 2)
+			swap_a(&a, false);
+		else if (stack_len(a) == 3)
+			sort_three(&a);
+		else
+			sort_stack(&a, &b);
 	}
-	sort_stack(&data);
-	// execute_cheapest_move(&data);
-	free_program(&data);
+	free_program(&a);
 	return (0);
 }
