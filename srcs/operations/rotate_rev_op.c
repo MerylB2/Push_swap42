@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:07:08 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/02/11 17:26:09 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:51:49 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static void	rotate_rev(t_data **stack)
 	last->next->prev = last;
 }
 
-void	rotate_rev_b(t_data **a, bool print)
+void	rotate_rev_a(t_data **a, bool print)
 {
 	rotate_rev(a);
 	if (!print)
 		ft_printf("rra\n");
 }
 
-void	rotate_rev_a(t_data **b, bool print)
+void	rotate_rev_b(t_data **b, bool print)
 {
 	rotate_rev(b);
 	if (!print)

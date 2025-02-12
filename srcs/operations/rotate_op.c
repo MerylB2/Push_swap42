@@ -6,13 +6,13 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:07:13 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/02/11 17:40:23 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:28:30 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_op(t_data **stack)
+static void	rotate_op(t_data **stack)
 {
 	t_data	*last_node;
 

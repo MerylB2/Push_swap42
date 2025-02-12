@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:12:24 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/02/11 19:13:27 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:14:27 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,16 @@ int	error_duplicate(t_data *a, int n)
 
 void	free_stack(t_data **stack)
 {
-	t_data	*current;
 	t_data	*temp;
 
 	if (!stack)
 		return ;
-	current = *stack;
-	while (current)
+	while (*stack)
 	{
-		temp = current->next;
-		current->value = 0;
-		free(current);
-		current = temp;
+		temp = (*stack)->next;
+		(*stack)->value = 0;
+		free(*stack);
+		*stack = temp;
 	}
 	*stack = NULL;
 }
