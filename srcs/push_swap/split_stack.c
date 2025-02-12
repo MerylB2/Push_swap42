@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 16:15:22 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/02/03 16:37:50 by cmetee-b         ###   ########.fr       */
+/*   Created: 2025/01/30 17:21:50 by cmetee-b          #+#    #+#             */
+/*   Updated: 2025/02/11 16:35:55 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 static int	count_words(char *s, char c)
 {

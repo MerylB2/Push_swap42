@@ -6,46 +6,44 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:07:13 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 20:00:09 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:40:23 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_a(t_stack *a)
+void	rotate_op(t_data **stack)
 {
-	t_node	*first;
-	t_node	*current;
+	t_data	*last_node;
 
-	if (!a || !a->head || !a->head->next)
-		return;
-	first = a->head;
-	a->head = a->head->next;
-	current = a->head;
-	while (current->next)
-		current = current->next;
-	current->next = first;
-	first->next = NULL;
+	if (!*stack || !(*stack)->next)
+		return ;
+	last_node = find_last_node(*stack);
+	last_node->next = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	last_node->next->prev = last_node;
+	last_node->next->next = NULL;
 }
 
-void	rotate_b(t_stack *b)
+void	rotate_a(t_data **a, bool print)
 {
-	t_node	*first;
-	t_node	*current;
-
-	if (!b || !b->head || !b->head->next)
-		return;
-	first = b->head;
-	b->head = b->head->next;
-	current = b->head;
-	while (current->next)
-		current = current->next;
-	current->next = first;
-	first->next = NULL;
+	rotate_op(a);
+	if (!print)
+		ft_printf("ra\n");
 }
 
-void	rotate_r(t_stack *a, t_stack *b)
+void	rotate_b(t_data **b, bool print)
 {
-	rotate_a(a);
-	rotate_b(b);
+	rotate_op(b);
+	if (!print)
+		ft_printf("rb\n");
+}
+
+void	rotate_r(t_data **a, t_data **b, bool print)
+{
+	rotate_op(a);
+	rotate_op(b);
+	if (!print)
+		ft_printf("rr\n");
 }

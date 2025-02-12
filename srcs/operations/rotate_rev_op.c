@@ -6,52 +6,44 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:07:08 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 20:04:39 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:26:09 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_rev_a(t_stack *a)
+static void	rotate_rev(t_data **stack)
 {
-	t_node	*last;
-	t_node	*prev;
+	t_data	*last;
 
-	if (!a || !a->head || !a->head->next)
-		return;
-	last = a->head;
-	prev = NULL;
-	while (last->next)
-	{
-		prev = last;
-		last = last->next;
-	}
-	prev->next = NULL;
-	last->next = a->head;
-	a->head = last;
+	if (!*stack || !(*stack)->next)
+		return ;
+	last = find_last_node(*stack);
+	last->prev->next = NULL;
+	last->next = *stack;
+	last->prev = NULL;
+	*stack = last;
+	last->next->prev = last;
 }
 
-void	rotate_rev_b(t_stack *b)
+void	rotate_rev_b(t_data **a, bool print)
 {
-	t_node	*last;
-	t_node	*prev;
-
-	if (!b || !b->head || !b->head->next)
-		return;
-	last = b->head;
-	prev = NULL;
-	while (last->next)
-	{
-		prev = last;
-		last = last->next;
-	}
-	prev->next = NULL;
-	last->next = b->head;
-	b->head = last;
+	rotate_rev(a);
+	if (!print)
+		ft_printf("rra\n");
 }
 
-void	rotate_rev_r(t_stack *a, t_stack *b)
+void	rotate_rev_a(t_data **b, bool print)
 {
-	rotate_rev_a(a);
-	rotate_rev_b(b);
+	rotate_rev(b);
+	if (!print)
+		ft_printf("rrb\n");
+}
+
+void	rotate_rev_r(t_data **a, t_data **b, bool print)
+{
+	rotate_rev(a);
+	rotate_rev(b);
+	if (!print)
+		ft_printf("rrr\n");
 }

@@ -1,11 +1,9 @@
 NAME = push_swap
-BONUS = checker
 
 LIBFT_DIR = ./libft
 LIBFT =  $(LIBFT_DIR)/libft.a
 INC_D = /includes
 SRC_DIR = srcs
-BONUS_DIR = bonus
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
@@ -13,14 +11,12 @@ RM = rm -f
 
 # Recherche des fichiers source
 SRCS = $(shell find $(SRC_DIR) -name "*.c")
-BONUS_SRCS = $(shell find $(BONUS_DIR) -name "*.c")
 
 # Répertoire des objets compilés
 OBJ_DIR = objets
 
 # Fichiers objets
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
-BONUS_OBJS = $(addprefix $(OBJ_DIR)/, $(BONUS_SRCS:.c=.o))
 
 # Couleurs pour l'affichage
 RED     := \033[1;31m
@@ -48,15 +44,6 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 	@echo "$(GREEN)$(NAME) créé avec succès !$(RESET)"
 
-# Lier et créer l'exécutable bonus
-bonus: $(BONUS)
-
-$(BONUS): $(BONUS_OBJS)
-	@echo "$(BLUE)Liaison de $(BONUS)...$(RESET)"
-	@make -C $(LIBFT_DIR)
-	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) -o $(BONUS)
-	@echo "$(GREEN)$(BONUS) créé avec succès !$(RESET)"
-
 # Crée le répertoire d'objets
 $(OBJ_DIR):
 	@echo "$(YELLOW)Création du répertoire des objets...$(RESET)"
@@ -65,19 +52,18 @@ $(OBJ_DIR):
 clean:
 	@echo "$(RED)Nettoyage des objets...$(RESET)"
 	@make clean -C $(LIBFT_DIR)
-	@$(RM) $(OBJS) $(BONUS_OBJS)
+	@$(RM) $(OBJS)
 	@rm -rf $(OBJ_DIR)
+	@echo "$(GREEN)Nettoyage des fichiers objets de $(NAME)$(RESET)"
 
 fclean: clean
-	@echo "$(RED)Suppression de $(NAME) et $(BONUS)...$(RESET)"
+	@echo "$(RED)Suppression de $(NAME)...$(RESET)"
 	@$(MAKE) fclean -C $(LIBFT_DIR)
-	@$(RM) $(NAME) $(BONUS)
+	@$(RM) $(NAME)
 	@rm -rf $(OBJ_DIR)
+	@echo "$(GREEN)Nettoyage Complet de $(NAME)$(RESET)"
 
 re: fclean all
 	@echo "$(GREEN)Recompilation complète...Done$(RESET)"
-
-re_bonus: fclean bonus
-	@echo "$(GREEN)Recompilation du bonus...Done$(RESET)"
 
 .PHONY: all bonus clean fclean re bonus re_bonus

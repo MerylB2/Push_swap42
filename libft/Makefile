@@ -6,7 +6,7 @@
 #    By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/28 16:25:10 by cmetee-b          #+#    #+#              #
-#    Updated: 2025/01/31 15:30:34 by cmetee-b         ###   ########.fr        #
+#    Updated: 2025/02/11 19:58:57 by cmetee-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,43 +15,39 @@ NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I../includes
 
-#les_fichiers
-SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
-       ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
-       ft_memmove.c ft_memset.c ft_strchr.c ft_strdup.c ft_strlcat.c \
-       ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c \
-       ft_tolower.c ft_toupper.c ft_substr.c ft_strjoin.c ft_strtrim.c \
-	   ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
-	   ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c get_next_line.c \
-	   get_next_line_utils.c ft_printf.c ft_printf_utils.c ft_lstadd_back.c \
-	   ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
-	   ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c ft_strcmp.c 
+SRC_DIR			= srcs/
+OBJ_DIR			= objs/
 
-OBJS = $(SRCS:.c=.o)
+#les_fichiers
+SRCS = $(shell find $(SRC_DIR) -name "*.c")
+
+OBJS = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
 #couleurs
 RED     := "\033[1;31m"
 GREEN   := "\033[1;32m"
+BLUE    := "\033[1;34m"
 RESET   := "\033[0m"
 
 #regles
-%.o: %.c
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -fPIE -c $< -o $@
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo $(GREEN)"COMPILATION LIBFT OK!!!!"$(RESET)
+	@echo $(GREEN)"Compilation de LIBFT Done!!!!"$(RESET)
 
 all: $(NAME)
 
 clean:
-	@rm -rf $(OBJS)
-	@echo $(GREEN)"NETTOYAGE DES FICHIERS OBJECTS DE LA LIBFT!! OK"$(RESET)
+	@rm -rf $(OBJ_DIR)
+	@echo $(BLUE)"Nettoyage des fichiers objets de la LIBFT!! OK"$(RESET)
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo $(GREEN)"NETTOYAGE COMPLET DE LA LIBFT!!! OK"$(RESET)
+	@echo $(BLUE)"Nettoyage Complet de LIBFT!!! OK"$(RESET)
 
 re: fclean all
 

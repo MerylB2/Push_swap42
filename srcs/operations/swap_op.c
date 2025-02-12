@@ -6,46 +6,43 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 18:03:42 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/01/30 19:56:18 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:50:27 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_a(t_stack *a)
+void	swap_op(t_data **head)
 {
-	t_node	*first;
-	t_node	*second;
-
-	if (!a || !a->head || !a->head->next)
+	if (!(*head) || !(*head)->next)
 		return ;
-	if (a->size < 2)
-		return ;
-	first = a->head;
-	second = a->head->next;
-	first->next = second->next;
-	second->next= first;
-	a->head = second;
+	*head = (*head)->next;
+	(*head)->prev->prev = *head;
+	(*head)->prev->next = (*head)->next;
+	if ((*head)->next)
+		(*head)->next->prev = (*head)->prev;
+	(*head)->next = (*head)->prev;
+	(*head)->prev = NULL;
 }
 
-void	swap_b(t_stack *b)
+void	swap_a(t_data **a, bool print)
 {
-	t_node	*first;
-	t_node	*second;
-
-	if (!b || !b->head || !b->head->next)
-		return ;
-	if (b->size < 2)
-		return ;
-	first = b->head;
-	second = b->head->next;
-	first->next = second->next;
-	second->next= first;
-	b->head = second;
+	swap_op(a);
+	if (!print)
+		ft_printf("sa\n");
 }
 
-void	swap_s(t_stack *a, t_stack *b)
+void	swap_b(t_data **b, bool print)
 {
-	swap_a(a);
-	swap_b(b);
+	swap_op(b);
+	if (!print)
+		ft_printf("sb\n");
+}
+
+void	swap_s(t_data **a, t_data **b, bool print)
+{
+	swap_op(a);
+	swap_op(b);
+	if (!print)
+		ft_printf("ss\n");
 }

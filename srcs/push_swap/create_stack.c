@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:48:35 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/02/03 18:08:21 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:13:14 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ void	init_stack_a(t_data **a, char **av)
 	long	n;
 	int		i;
 
+	i = 0;
 	while (av[i])
 	{
 		if (error_syntax(av[i]))
 			free_errors(a);
-		n = ft_atoll(av[i]);
+		n = ft_atol(av[i]);
 		if (n > INT_MAX || n < INT_MIN)
-			free_erros(a);
+			free_errors(a);
 		if (error_duplicate(*a, (int)n))
 			free_errors(a);
 		append_node(a, (int)n);

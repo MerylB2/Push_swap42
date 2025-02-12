@@ -6,7 +6,7 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 10:42:35 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/02/03 18:07:40 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:55:34 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ typedef struct s_data
 	int				push_cost;
 	bool			median;
 	bool			cheapest;
-	int				pos;
-	struct 	s_node	*target_pos;
-	struct  s_node 	*next;
-	struct	s_node	*prev;
-}	t_data;
+	struct s_data	*target_node;
+	struct s_data	*next;
+	struct s_data	*prev;
+}				t_data;
 
 /*
 ** --- SWAP OPERATIONS ---
@@ -39,15 +38,15 @@ typedef struct s_data
 */
 void	swap_a(t_data **a, bool print);
 void	swap_b(t_data **b, bool print);
-void	swap_s(t_data *a, t_data **b, bool print);
+void	swap_s(t_data **a, t_data **b, bool print);
 
 /*
 ** --- PUSH OPERATIONS ---
 ** Prend le premier élément au sommet d'une pile et le met sur l'autre pile
 ** Ne fait rien si la pile d'origine est vide
 */
-void	push_a(t_data *a, t_data **b, bool print);
-void	push_b(t_data *a, t_data **b, bool print);
+void	push_a(t_data **a, t_data **b, bool print);
+void	push_b(t_data **b, t_data **a, bool print);
 
 /*
 ** --- ROTATE OPERATIONS ---
@@ -67,13 +66,6 @@ void	rotate_rev_a(t_data **a, bool print);
 void	rotate_rev_b(t_data **b, bool print);
 void	rotate_rev_r(t_data **a, t_data **b, bool print);
 
-/*
-** --- UTILS ---
-** Fonctions utilitaires pour les opérations
-*/
-void	print_operation(char *op);
-int		is_valid_operation(char *op);
-void	execute_op(t_data **a, t_data **b, char *op);
 
 /*
 ** --- BONUS OPERATIONS ---

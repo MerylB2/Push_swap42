@@ -6,13 +6,13 @@
 /*   By: cmetee-b <cmetee-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:13:00 by cmetee-b          #+#    #+#             */
-/*   Updated: 2025/02/03 18:12:30 by cmetee-b         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:27:53 by cmetee-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol (const char *str)
+long	ft_atol(const char *str)
 {
 	long	res;
 	int		sign;
@@ -35,7 +35,7 @@ long	ft_atol (const char *str)
 	return (res * sign);
 }
 
-static void	append_node(t_data **stack, int nb)
+void	append_node(t_data **stack, int nb)
 {
 	t_data	*node;
 	t_data	*last_node;
@@ -58,6 +58,5 @@ static void	append_node(t_data **stack, int nb)
 		last_node = find_last_node(*stack);
 		last_node->next = node;
 		node->prev = last_node;
-	}
-		
+	}		
 }
